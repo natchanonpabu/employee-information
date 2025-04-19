@@ -4,6 +4,7 @@
   --background: #f4f4f4;
   --foreground: #171717;
   --primary: #5b7fe1;
+  --text-base: #dedede;
 }
 
 @theme inline {
@@ -13,6 +14,7 @@
   --font-mono: var(--font-geist-mono);
 
   --color-primary: var(--primary);
+  --color-text-base: var(--text-base);
 }
 
 @media (prefers-color-scheme: dark) {
