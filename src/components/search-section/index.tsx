@@ -20,7 +20,7 @@ const SearchSection = (props: SearchSectionProps) => {
   return (
     <div className="bg-white flex px-6 pt-6 pb-4 rounded-2xl">
       <div className="pt-2 pb-8">
-        <div className="h-full border-4 border-primary rounded-full" />
+        <div className="h-full border-2 border-primary rounded-full" />
       </div>
       <Form
         form={form}
