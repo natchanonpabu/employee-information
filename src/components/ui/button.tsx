@@ -1,7 +1,7 @@
 import { cn } from "@/utils";
 import { Button, ButtonProps } from "antd";
 
-export const ButtonPrimary = (props: ButtonProps) => {
+export const ButtonCustom = (props: ButtonProps) => {
   const { className, ...rest } = props;
   return (
     <Button

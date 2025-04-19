@@ -1,2 +1,2 @@
-export * from "./button-primary";
+export * from "./button";
 export * from "./input";

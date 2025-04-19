@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "@/components/ui";
+import { ButtonCustom } from "@/components/ui";
 import { Col, Form, FormInstance, Row } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
@@ -38,13 +38,13 @@ const SearchSection = (props: SearchSectionProps) => {
           ))}
           <Col sm={12} md={8} lg={6}>
             <Form.Item label=" " className="flex justify-end">
-              <ButtonPrimary
+              <ButtonCustom
                 htmlType="submit"
                 className="w-[12.5rem] relative -top-1"
                 icon={<SearchOutlined className="text-2xl" />}
               >
                 ค้นหา
-              </ButtonPrimary>
+              </ButtonCustom>
             </Form.Item>
           </Col>
         </Row>

@@ -3,7 +3,7 @@
 import AvatarCustom from "@/components/ui/avatar";
 import Menus from "./menus";
 import { Menu13 } from "@/assets/icons/menus";
-import { ButtonPrimary } from "@/components/ui";
+import { ButtonCustom } from "@/components/ui";
 
 const Sidebar = () => {
   return (
@@ -13,9 +13,9 @@ const Sidebar = () => {
           <AvatarCustom />
           <Menus />
         </div>
-        <ButtonPrimary className="!bg-transparent !border-transparent !w-5 !h-5 !p-0">
+        <ButtonCustom className="!bg-transparent !border-transparent !w-5 !h-5 !p-0">
           <Menu13 className="fill-none w-5 h-5 cursor-pointer !shadow-none" />
-        </ButtonPrimary>
+        </ButtonCustom>
       </div>
     </div>
   );
