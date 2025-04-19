@@ -22,7 +22,7 @@ const Menus = () => {
       href={menu.path}
       key={menu.path}
       className={cn(
-        "!w-14 !h-14 flex items-center justify-center !border-r-amber-400 hover:!border-r-4",
+        "!w-14 !h-14 flex items-center justify-center !border-r-secondary hover:!border-r-4",
         pathname === menu.path && "!border-r-4"
       )}
     >

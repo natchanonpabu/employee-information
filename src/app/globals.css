@@ -4,6 +4,7 @@
   --background: #f4f4f4;
   --foreground: #171717;
   --primary: #5b7fe1;
+  --secondary: #fbc108;
   --text-base: #dedede;
 }
 
@@ -14,6 +15,7 @@
   --font-mono: var(--font-geist-mono);
 
   --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-text-base: var(--text-base);
 }
 
