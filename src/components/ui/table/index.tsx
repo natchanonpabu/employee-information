@@ -57,7 +57,6 @@ export const TableCustom = <T extends object>(props: TableCustomProps<T>) => {
         "[&_.ant-table-thead>tr>th]:!bg-primary [&_.ant-table-thead>tr>th]:!text-white  [&_.ant-table-thead>tr>th]:!base [&_.ant-table-thead>tr>th]:!border-b-0 [&_.ant-table-thead>tr>th]:!h-[4.25rem] [&_.ant-table-thead>tr>th]:!py-0 [&_.ant-table-thead>tr>th]:!px-1",
         "[&_.ant-table-thead>tr>th::before]:!bg-primary",
         "[&_.ant-table-tbody>tr>td:first-child]:border-l [&_.ant-table-tbody>tr>td:first-child]:border-l-gray-300 [&_.ant-table-tbody>tr>td:last-child]:border-r [&_.ant-table-tbody>tr>td:last-child]:border-r-gray-300",
-        "[&_.ant-table-tbody>tr:last-child>td:first-child]:rounded-bl-3xl [&_.ant-table-tbody>tr:last-child>td:last-child]:rounded-br-3xl",
         "[&_.ant-table-tbody>.ant-table-placeholder>td]:!border-b [&_.ant-table-tbody>.ant-table-placeholder>td]:!border-b-gray-300 [&_.ant-table-tbody>.ant-table-placeholder>td]:!rounded-b-3xl",
         "[&_.ant-table-tbody>tr:last-child>td]:!border-b [&_.ant-table-tbody>tr:last-child>td]:!border-b-gray-300 [&_.ant-table-tbody>tr>td]:!border-b-0",
         "[&_.ant-table-tbody>tr>td]:!py-0 [&_.ant-table-tbody>tr>td]:!px-1 [&_.ant-table-tbody>tr>td]:!h-15",
@@ -67,6 +66,34 @@ export const TableCustom = <T extends object>(props: TableCustomProps<T>) => {
       columns={_columns}
       rowClassName={(_, index) => {
         return index % 2 === 0 ? "bg-white" : "bg-gray-200";
+      }}
+      components={{
+        body: {
+          row: (propsRow) => {
+            const { children, ...restProps } = propsRow;
+            const lastRowKey =
+              props.dataSource?.[props.dataSource.length - 1]?.[
+                props.rowKey as keyof T
+              ];
+            const isLastRow = propsRow["data-row-key"] === lastRowKey;
+
+            return (
+              <tr {...restProps}>
+                {React.Children.map(children, (child, index) => {
+                  const isFirst = index === 0;
+                  const isLast = index === children.length - 1;
+                  return React.cloneElement(child, {
+                    className: cn(
+                      child.props.className,
+                      isLastRow && isFirst && "rounded-bl-3xl",
+                      isLastRow && isLast && "rounded-br-3xl"
+                    ),
+                  });
+                })}
+              </tr>
+            );
+          },
+        },
       }}
       {...rest}
     />
