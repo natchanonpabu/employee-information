@@ -6,6 +6,9 @@
   --primary: #5b7fe1;
   --secondary: #fbc108;
   --text-base: #dedede;
+  --waiting-bright: #fff9e5;
+  --error: #c42828;
+  --error-bright: #f9eaea;
 }
 
 @theme inline {
@@ -17,6 +20,9 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-text-base: var(--text-base);
+  --color-waiting-bright: var(--waiting-bright);
+  --color-error: var(--error);
+  --color-error-bright: var(--error-bright);
 }
 
 @media (prefers-color-scheme: dark) {

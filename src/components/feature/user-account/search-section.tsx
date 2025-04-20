@@ -1,5 +1,5 @@
 import SearchSection from "@/components/search-section";
-import { InputCustom } from "@/components/ui";
+import { DatePickerCustom, InputCustom } from "@/components/ui";
 import { useForm } from "antd/es/form/Form";
 
 const SearchSectionUserAccount = () => {
@@ -17,7 +17,7 @@ const SearchSectionUserAccount = () => {
       name: "employeeName",
     },
     {
-      input: <InputCustom placeholder="เลือกวันที่" />,
+      input: <DatePickerCustom placeholder="เลือกวันที่" />,
       label: "วันที่สมัคร",
       name: "registerDate",
     },
