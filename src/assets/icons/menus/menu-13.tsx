@@ -4,8 +4,9 @@ export const Menu13 = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 22 22"
-    width={22}
-    height={22}
+    width="100%"
+    height="100%"
+    fill="none"
     {...props}
   >
     <path

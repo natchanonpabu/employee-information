@@ -8,11 +8,11 @@ const Menus = () => {
 
   const menus = [
     {
-      icon: <Menu6 className="fill-none" />,
+      icon: <Menu6 className="fill-none w-[1.375rem] h-[1.125rem]" />,
       path: "/user",
     },
     {
-      icon: <Menu12 className="fill-none" />,
+      icon: <Menu12 className="fill-none w-[1.375rem] h-[1.188rem]" />,
       path: "/Menu12",
     },
   ];
@@ -22,8 +22,8 @@ const Menus = () => {
       href={menu.path}
       key={menu.path}
       className={cn(
-        "!w-14 !h-14 flex items-center justify-center !border-r-secondary hover:!border-r-4",
-        pathname === menu.path && "!border-r-4"
+        "!w-14 !h-14 flex items-center justify-center !border-transparent hover:!border-r-secondary !border-r-4",
+        pathname === menu.path && "!border-r-secondary"
       )}
     >
       {menu.icon}

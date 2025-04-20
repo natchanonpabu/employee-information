@@ -5,18 +5,30 @@ import Image from "next/image";
 import NodataImage from "@/assets/images/nodata.png";
 import { cn } from "@/utils";
 import { actionsDefault } from "@/components/ui/table/actions";
-import { RootState, useAppSelector } from "@/store";
-
-interface UserAccountTable {
-  employeeNo: string;
-  name: string;
-  address: string;
-}
+import { RootState, useAppDispatch, useAppSelector } from "@/store";
+import { Form } from "antd";
+import { UserFormModal } from "./user-form";
+import {
+  deleteIdAction,
+  deleteOpenAction,
+  deleteUser,
+  formOpenAction,
+  getUser,
+  patchUser,
+  postUser,
+} from "./user.slice";
+import { User } from "./user.type";
+import { ModalDelete } from "@/components/ui/modal-delete";
 
 const TableUserAccount = () => {
-  const { users } = useAppSelector((state: RootState) => state.user);
+  const [form] = Form.useForm();
 
-  const columns: ColumnsType<UserAccountTable> = [
+  const dispatch = useAppDispatch();
+  const { users, user, formOpen, deleteOpen, deleteId } = useAppSelector(
+    (state: RootState) => state.user
+  );
+
+  const columns: ColumnsType<User> = [
     {
       title: "รหัสพนักงาน",
       dataIndex: "employeeNo",
@@ -38,6 +50,41 @@ const TableUserAccount = () => {
     },
   ];
 
+  const formOpenToggle = () => {
+    if (formOpen) form.resetFields();
+    dispatch(formOpenAction(!formOpen));
+  };
+
+  const deleteOpenToggle = () => {
+    dispatch(deleteOpenAction(!deleteOpen));
+  };
+
+  const onEdit = (id: string) => {
+    dispatch(getUser(id));
+  };
+
+  const onDelete = (id: string) => {
+    dispatch(deleteIdAction(id));
+    deleteOpenToggle();
+  };
+
+  const onConfirmDelete = () => {
+    dispatch(deleteUser(deleteId ?? ""));
+  };
+
+  const onSubmit = async () => {
+    const values = form.getFieldsValue();
+
+    if (!user)
+      return dispatch(postUser(values)).then((arg) =>
+        arg.meta.requestStatus === "fulfilled" ? form.resetFields() : null
+      );
+
+    return dispatch(patchUser(values)).then((arg) =>
+      arg.meta.requestStatus === "fulfilled" ? form.resetFields() : null
+    );
+  };
+
   return (
     <div
       className={cn(
@@ -45,6 +92,18 @@ const TableUserAccount = () => {
         !users.length && "items-center"
       )}
     >
+      <ModalDelete
+        open={deleteOpen}
+        onClose={deleteOpenToggle}
+        onOk={onConfirmDelete}
+      />
+      <UserFormModal
+        form={form}
+        onClose={formOpenToggle}
+        onOk={onSubmit}
+        open={formOpen}
+        data={user}
+      />
       {!users.length ? (
         <div className="flex flex-col items-center py-[9.125rem]">
           <Image
@@ -60,17 +119,24 @@ const TableUserAccount = () => {
           <div className="flex justify-between items-center">
             <div className="flex flex-col gap-1">
               <span className="text-2xl">ผลลัพธ์การค้นหา</span>
-              <span className="text-base">{users.length} รายการ</span>
+              <span className="base">{users.length} รายการ</span>
             </div>
-            <ButtonCustom icon={<PlusOutlined />} className="w-60">
+            <ButtonCustom
+              icon={<PlusOutlined />}
+              className="w-60"
+              onClick={formOpenToggle}
+            >
               เพิ่มพนักงาน
             </ButtonCustom>
           </div>
-          <TableCustom<UserAccountTable>
+          <TableCustom<User>
             columns={columns}
             dataSource={users}
             rowKey="id"
-            action={actionsDefault()}
+            action={actionsDefault({
+              edit: { onClick: (record) => onEdit(record.id) },
+              delete: { onClick: (record) => onDelete(record.id) },
+            })}
           />
         </>
       )}

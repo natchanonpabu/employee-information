@@ -54,7 +54,7 @@ export const TableCustom = <T extends object>(props: TableCustomProps<T>) => {
         className,
         "[&_.ant-table]:!bg-transparent",
         "[&_table>thead>tr:first-child>th:first-child]:!rounded-tl-3xl [&_table>thead>tr:first-child>th:last-child]:!rounded-tr-3xl",
-        "[&_.ant-table-thead>tr>th]:!bg-primary [&_.ant-table-thead>tr>th]:!text-white  [&_.ant-table-thead>tr>th]:!text-base [&_.ant-table-thead>tr>th]:!border-b-0 [&_.ant-table-thead>tr>th]:!h-[4.25rem] [&_.ant-table-thead>tr>th]:!py-0 [&_.ant-table-thead>tr>th]:!px-1",
+        "[&_.ant-table-thead>tr>th]:!bg-primary [&_.ant-table-thead>tr>th]:!text-white  [&_.ant-table-thead>tr>th]:!base [&_.ant-table-thead>tr>th]:!border-b-0 [&_.ant-table-thead>tr>th]:!h-[4.25rem] [&_.ant-table-thead>tr>th]:!py-0 [&_.ant-table-thead>tr>th]:!px-1",
         "[&_.ant-table-thead>tr>th::before]:!bg-primary",
         "[&_.ant-table-tbody>tr>td:first-child]:border-l [&_.ant-table-tbody>tr>td:first-child]:border-l-gray-300 [&_.ant-table-tbody>tr>td:last-child]:border-r [&_.ant-table-tbody>tr>td:last-child]:border-r-gray-300",
         "[&_.ant-table-tbody>tr:last-child>td:first-child]:rounded-bl-3xl [&_.ant-table-tbody>tr:last-child>td:last-child]:rounded-br-3xl",

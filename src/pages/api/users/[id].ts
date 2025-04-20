@@ -6,7 +6,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     query: { id },
     method,
   } = req;
-
   const index = mockUsers.findIndex((u) => u.id === id);
 
   if (index === -1 && method !== "POST") {

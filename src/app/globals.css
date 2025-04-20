@@ -4,11 +4,15 @@
   --background: #f4f4f4;
   --foreground: #171717;
   --primary: #5b7fe1;
+  --primary-bright: #ecf1ff;
   --secondary: #fbc108;
-  --text-base: #dedede;
+  --base: #dedede;
+  --text-base: #212121;
   --waiting-bright: #fff9e5;
   --error: #c42828;
   --error-bright: #f9eaea;
+  --success: #09aa6a;
+  --success-bright: #e7faf2;
 }
 
 @theme inline {
@@ -18,11 +22,15 @@
   --font-mono: var(--font-geist-mono);
 
   --color-primary: var(--primary);
+  --color-primary-bright: var(--primary-bright);
   --color-secondary: var(--secondary);
+  --color-base: var(--base);
   --color-text-base: var(--text-base);
   --color-waiting-bright: var(--waiting-bright);
   --color-error: var(--error);
   --color-error-bright: var(--error-bright);
+  --color-success: var(--success);
+  --color-success-bright: var(--success-bright);
 }
 
 @media (prefers-color-scheme: dark) {

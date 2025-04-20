@@ -6,7 +6,7 @@ export const DatePickerCustom = (props: DatePickerProps) => {
 
   return (
     <DatePicker
-      className={cn("w-full !h-12 !border-text-base", className)}
+      className={cn("w-full !h-12 !border-base", className)}
       {...rest}
     />
   );

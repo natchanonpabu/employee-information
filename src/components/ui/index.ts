@@ -3,3 +3,7 @@ export * from "./input";
 export * from "./avatar";
 export * from "./table";
 export * from "./date-picker";
+export * from "./modal";
+export * from "./modal-delete";
+export * from "./alert";
+export * from "./text-area";

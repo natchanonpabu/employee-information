@@ -23,15 +23,13 @@ export const actionsDefault = <T extends object>(props?: ActionsDefault<T>) => {
 
   return [
     {
-      onClick: (event: T) =>
-        edit?.onClick?.(event) ?? console.log("edit", event),
+      onClick: (event: T) => edit?.onClick?.(event),
       children: edit?.children ?? <EditIcon className="w-6 h-6" />,
       className:
         edit?.className ?? "bg-waiting-bright hover:bg-waiting-bright/70",
     },
     {
-      onClick: (event: T) =>
-        _delete?.onClick?.(event) ?? console.log("delete", event),
+      onClick: (event: T) => _delete?.onClick?.(event),
       children: _delete?.children ?? <TrashIcon className="w-6 h-6" />,
       className:
         _delete?.className ?? "bg-error-bright hover:bg-error-bright/70",
