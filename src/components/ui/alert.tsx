@@ -1,4 +1,5 @@
 import CheckCircle from "@/assets/icons/check-circle";
+import Info from "@/assets/icons/info";
 import XMark from "@/assets/icons/x-mark";
 import { cn } from "@/utils";
 import { notification } from "antd";
@@ -8,12 +9,12 @@ import { styled } from "styled-components";
 export const NotificationBox = styled.div`
   .title {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #1f2937;
   }
 
   .description {
-    font-size: 16px;
+    font-size: 1rem;
     color: #6b7280;
   }
 `;
@@ -43,7 +44,7 @@ const Alert = ({ type }: NotificationProps) => {
         return {
           title: "เกิดข้อผิดพลาด",
           desc: "กรุณาลองใหม่อีกครั้ง",
-          icon: <></>,
+          icon: <Info className="w-10 h-10" />,
           className: "!border-error !bg-error-bright",
         };
       case "warning":
@@ -91,7 +92,7 @@ const Alert = ({ type }: NotificationProps) => {
     duration: 3,
     placement: "topRight",
     closeIcon: null,
-    className: cn("!p-5 !rounded-lg border-2", className),
+    className: cn("!p-4 !pt-2 !rounded-lg border", className),
   });
 };
 

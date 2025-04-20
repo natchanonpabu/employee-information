@@ -89,6 +89,7 @@ export const ModalCustom = ({
 
 const ModalStyle = styled(Modal)`
   .ant-modal-content {
-    border-radius: 16px;
+    border-radius: 1rem;
+    padding: 1.5rem;
   }
 `;
