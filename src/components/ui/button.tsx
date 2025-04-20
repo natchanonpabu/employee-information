@@ -6,8 +6,9 @@ interface ButtonCustomProps extends Omit<ButtonProps, "variant"> {
 }
 
 const variant = {
-  primary: "!bg-primary !border-primary !text-white",
-  gray: "!bg-base !border-base !text-text-base",
+  primary:
+    "!bg-primary !border-primary !text-white hover:!bg-primary/70 hover:!border-primary/70",
+  gray: "!bg-base !border-base !text-text-base hover:!bg-base/70 hover:!border-base/70",
 };
 
 export const ButtonCustom = (props: ButtonCustomProps) => {

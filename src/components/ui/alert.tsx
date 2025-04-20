@@ -35,7 +35,7 @@ const Alert = ({ type }: NotificationProps) => {
       case "success":
         return {
           title: "สำเร็จ",
-          desc: "บันทึกข้อมูลเรียบร้อยแล้ว",
+          desc: "ทำรายการเสร็จสิ้น",
           icon: <CheckCircle className="w-10 h-10" />,
           className: "!border-success !bg-success-bright",
         };
@@ -88,7 +88,7 @@ const Alert = ({ type }: NotificationProps) => {
         </div>
       </NotificationBox>
     ),
-    duration: 30,
+    duration: 3,
     placement: "topRight",
     closeIcon: null,
     className: cn("!p-5 !rounded-lg border-2", className),

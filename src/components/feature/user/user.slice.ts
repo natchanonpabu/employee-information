@@ -29,6 +29,7 @@ const getUsers = createAsyncThunk<User[], UserRequest>(
       const response = await axios.get("/users", { params });
       return response.data;
     } catch (error: unknown) {
+      Alert({ type: "error" });
       if (isAxiosError(error)) {
         const message =
           error.response?.data?.message || error.message || "Axios error";
@@ -46,6 +47,7 @@ const getUser = createAsyncThunk<User, string>(
       const response = await axios.get(`/users/${id}`);
       return response.data;
     } catch (error: unknown) {
+      Alert({ type: "error" });
       if (isAxiosError(error)) {
         const message =
           error.response?.data?.message || error.message || "Axios error";
@@ -61,8 +63,10 @@ const postUser = createAsyncThunk<User, User>(
   async (user, thunkAPI) => {
     try {
       const response = await axios.post("/users", user);
+      Alert({ type: "success" });
       return response.data;
     } catch (error: unknown) {
+      Alert({ type: "error" });
       if (isAxiosError(error)) {
         const message =
           error.response?.data?.message || error.message || "Axios error";
@@ -78,8 +82,10 @@ const patchUser = createAsyncThunk<User, User>(
   async (user, thunkAPI) => {
     try {
       const response = await axios.patch(`/users/${user.id}`, user);
+      Alert({ type: "success" });
       return response.data;
     } catch (error: unknown) {
+      Alert({ type: "error" });
       if (isAxiosError(error)) {
         const message =
           error.response?.data?.message || error.message || "Axios error";
@@ -98,6 +104,7 @@ const deleteUser = createAsyncThunk<User, string>(
       Alert({ type: "success" });
       return response.data.user;
     } catch (error: unknown) {
+      Alert({ type: "error" });
       if (isAxiosError(error)) {
         const message =
           error.response?.data?.message || error.message || "Axios error";
