@@ -23,7 +23,7 @@ export const UserFormModal = ({
   onOk,
   open,
 }: UserFormModalProps) => {
-  const { loading } = useAppSelector((state) => state.user);
+  const { formLoading: loading } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     if (data && open && form) {

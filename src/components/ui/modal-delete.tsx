@@ -5,9 +5,15 @@ interface ModalDeleteProps {
   open: boolean;
   onClose: () => void;
   onOk: () => void;
+  loading: boolean;
 }
 
-export const ModalDelete = ({ onClose, onOk, open }: ModalDeleteProps) => {
+export const ModalDelete = ({
+  onClose,
+  onOk,
+  open,
+  loading = false,
+}: ModalDeleteProps) => {
   return (
     <ModalCustom
       open={open}
@@ -18,6 +24,7 @@ export const ModalDelete = ({ onClose, onOk, open }: ModalDeleteProps) => {
       okText="ตกลง"
       bgColorIcon="bg-error-bright [&_svg]:w-8 [&_svg]:h-8 [&_svg]:relative [&_svg]:left-0.5 [&_svg]:top-0.5"
       icon={Info}
+      loading={loading}
     >
       <div className="text-text-base">กรุณายืนยันการทำรายการอีกครั้ง</div>
     </ModalCustom>

@@ -15,7 +15,7 @@ const SearchSectionUser = () => {
   const [form] = useForm();
 
   const dispatch = useAppDispatch();
-  const { loading } = useAppSelector((state) => state.user);
+  const { getUsersLoading: loading } = useAppSelector((state) => state.user);
 
   const inputs = [
     {

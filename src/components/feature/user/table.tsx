@@ -23,9 +23,14 @@ const TableUserAccount = () => {
   const [form] = Form.useForm();
 
   const dispatch = useAppDispatch();
-  const { users, user, formOpen, deleteOpen, deleteId } = useAppSelector(
-    (state: RootState) => state.user
-  );
+  const {
+    users,
+    user,
+    formOpen,
+    deleteOpen,
+    deleteId,
+    deleteLoading: loading,
+  } = useAppSelector((state: RootState) => state.user);
 
   const columns: ColumnsType<User> = [
     {
@@ -93,6 +98,7 @@ const TableUserAccount = () => {
         open={deleteOpen}
         onClose={deleteOpenToggle}
         onOk={onConfirmDelete}
+        loading={loading}
       />
       <UserFormModal
         form={form}

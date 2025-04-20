@@ -8,7 +8,9 @@ interface InitialState {
   users: User[];
   user?: User;
   formOpen: boolean;
-  loading: boolean;
+  getUsersLoading: boolean;
+  formLoading: boolean;
+  deleteLoading: boolean;
   deleteOpen: boolean;
   deleteId?: string;
 }
@@ -17,7 +19,9 @@ const initialState: InitialState = {
   users: [],
   user: undefined,
   formOpen: false,
-  loading: false,
+  getUsersLoading: false,
+  formLoading: false,
+  deleteLoading: false,
   deleteOpen: false,
   deleteId: undefined,
 };
@@ -141,45 +145,38 @@ const slice = createSlice({
   reducers,
   extraReducers: (builder) => {
     builder.addCase(getUsers.pending, (state) => {
-      state.loading = true;
+      state.getUsersLoading = true;
     });
     builder.addCase(getUsers.fulfilled, (state, action) => {
-      state.loading = false;
+      state.getUsersLoading = false;
       state.users = action.payload;
     });
     builder.addCase(getUsers.rejected, (state) => {
-      state.loading = false;
+      state.getUsersLoading = false;
     });
 
-    builder.addCase(getUser.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(getUser.fulfilled, (state, action) => {
-      state.loading = false;
       state.formOpen = true;
       state.user = action.payload;
     });
-    builder.addCase(getUser.rejected, (state) => {
-      state.loading = false;
-    });
 
     builder.addCase(postUser.pending, (state) => {
-      state.loading = true;
+      state.formLoading = true;
     });
     builder.addCase(postUser.fulfilled, (state, action) => {
-      state.loading = false;
+      state.formLoading = false;
       state.formOpen = false;
       state.users.push(action.payload);
     });
     builder.addCase(postUser.rejected, (state) => {
-      state.loading = false;
+      state.formLoading = false;
     });
 
     builder.addCase(patchUser.pending, (state) => {
-      state.loading = true;
+      state.formLoading = true;
     });
     builder.addCase(patchUser.fulfilled, (state, action) => {
-      state.loading = false;
+      state.formLoading = false;
       state.formOpen = false;
       state.users = state.users.map((user) => {
         if (user.id === action.payload.id) {
@@ -190,21 +187,21 @@ const slice = createSlice({
       state.user = undefined;
     });
     builder.addCase(patchUser.rejected, (state) => {
-      state.loading = false;
+      state.formLoading = false;
       state.user = undefined;
     });
 
     builder.addCase(deleteUser.pending, (state) => {
-      state.loading = true;
+      state.deleteLoading = true;
     });
     builder.addCase(deleteUser.fulfilled, (state, action) => {
-      state.loading = false;
+      state.deleteLoading = false;
       state.deleteOpen = false;
       state.deleteId = undefined;
       state.users = state.users.filter((user) => user.id !== action.payload.id);
     });
     builder.addCase(deleteUser.rejected, (state) => {
-      state.loading = false;
+      state.deleteLoading = false;
       state.deleteOpen = false;
       state.deleteId = undefined;
     });
