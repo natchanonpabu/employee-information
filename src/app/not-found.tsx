@@ -7,7 +7,7 @@ const NotFound = () => {
       <p className="mt-2 text-neutral-500">
         The page you&apos;re looking for doesn&apos;t exist.
       </p>
-      <Link href="/user" className="mt-4 text-blue-500">
+      <Link href="/" className="mt-4 text-blue-500">
         กลับหน้าหลัก
       </Link>
     </div>
