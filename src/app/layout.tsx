@@ -3,6 +3,7 @@ import "./globals.css";
 import { ConfigProvider } from "antd";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "@ant-design/v5-patch-for-react-19";
+import { ReduxProvider } from "@/providers";
 
 export const metadata: Metadata = {
   title: "Employee information",
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AntdRegistry>
-          <ConfigProvider>{children}</ConfigProvider>
+          <ConfigProvider>
+            <ReduxProvider>{children}</ReduxProvider>
+          </ConfigProvider>
         </AntdRegistry>
       </body>
     </html>

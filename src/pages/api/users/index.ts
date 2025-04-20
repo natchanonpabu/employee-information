@@ -16,7 +16,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (employeeNo) {
       filteredUsers = filteredUsers.filter((user) =>
-        user.name.toLowerCase().includes(String(employeeNo).toLowerCase())
+        user.employeeNo.toLowerCase().includes(String(employeeNo).toLowerCase())
       );
     }
 

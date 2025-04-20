@@ -5,28 +5,16 @@ import Image from "next/image";
 import NodataImage from "@/assets/images/nodata.png";
 import { cn } from "@/utils";
 import { actionsDefault } from "@/components/ui/table/actions";
+import { RootState, useAppSelector } from "@/store";
 
 interface UserAccountTable {
   employeeNo: string;
-  employeeName: string;
+  name: string;
   address: string;
 }
 
 const TableUserAccount = () => {
-  const data = [
-    {
-      id: 1,
-      employeeNo: "12345",
-      employeeName: "Natchanon Panbut",
-      address: "Bangkok",
-    },
-    {
-      id: 2,
-      employeeNo: "12346",
-      employeeName: "Natchanon Panbut",
-      address: "Bangkok",
-    },
-  ];
+  const { users } = useAppSelector((state: RootState) => state.user);
 
   const columns: ColumnsType<UserAccountTable> = [
     {
@@ -38,14 +26,15 @@ const TableUserAccount = () => {
     },
     {
       title: <div className="text-center">ชื่อพนักงาน</div>,
-      dataIndex: "employeeName",
-      key: "employeeName",
+      dataIndex: "name",
+      key: "name",
       width: 300,
     },
     {
       title: <div className="text-center">ที่อยู่</div>,
       dataIndex: "address",
       key: "address",
+      render: (value) => value ?? "-",
     },
   ];
 
@@ -53,10 +42,10 @@ const TableUserAccount = () => {
     <div
       className={cn(
         "bg-white rounded-2xl flex flex-col gap-5 p-6",
-        !data.length && "items-center"
+        !users.length && "items-center"
       )}
     >
-      {!data.length ? (
+      {!users.length ? (
         <div className="flex flex-col items-center py-[9.125rem]">
           <Image
             src={NodataImage}
@@ -71,7 +60,7 @@ const TableUserAccount = () => {
           <div className="flex justify-between items-center">
             <div className="flex flex-col gap-1">
               <span className="text-2xl">ผลลัพธ์การค้นหา</span>
-              <span className="text-base">4 รายการ</span>
+              <span className="text-base">{users.length} รายการ</span>
             </div>
             <ButtonCustom icon={<PlusOutlined />} className="w-60">
               เพิ่มพนักงาน
@@ -79,7 +68,7 @@ const TableUserAccount = () => {
           </div>
           <TableCustom<UserAccountTable>
             columns={columns}
-            dataSource={data}
+            dataSource={users}
             rowKey="id"
             action={actionsDefault()}
           />
