@@ -1,6 +1,6 @@
 import SearchSection from "@/components/search-section";
 import { DatePickerCustom, InputCustom } from "@/components/ui";
-import { useAppDispatch } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
 import { useForm } from "antd/es/form/Form";
 import dayjs from "dayjs";
 import { getUsers } from "@/components/feature/user/user.slice";
@@ -15,6 +15,7 @@ const SearchSectionUser = () => {
   const [form] = useForm();
 
   const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((state) => state.user);
 
   const inputs = [
     {
@@ -50,6 +51,7 @@ const SearchSectionUser = () => {
       inputs={inputs}
       form={form}
       onFinish={(values) => onFinish(values as SearchSectionUserParams)}
+      loading={loading}
     />
   );
 };

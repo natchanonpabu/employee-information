@@ -6,11 +6,12 @@ import { useEffect } from "react";
 import { User } from "./user.type";
 import PageEdit from "@/assets/icons/page-edit";
 import UserAdd from "@/assets/icons/user-add";
+import { useAppSelector } from "@/store";
 
 interface UserFormModalProps {
-  form: FormInstance<unknown>;
+  form: FormInstance<User>;
   onClose: () => void;
-  onOk: () => void;
+  onOk: (values: User) => void;
   open: boolean;
   data?: User;
 }
@@ -22,6 +23,8 @@ export const UserFormModal = ({
   onOk,
   open,
 }: UserFormModalProps) => {
+  const { loading } = useAppSelector((state) => state.user);
+
   useEffect(() => {
     if (data && open && form) {
       form.setFieldsValue({
@@ -37,12 +40,13 @@ export const UserFormModal = ({
     <ModalCustom
       open={open}
       onClose={onClose}
-      onOk={onOk}
+      onOk={() => form.submit()}
       title={title}
       width={800}
       icon={icon}
       bgColorIcon="bg-primary-bright [&_svg]:w-8 [&_svg]:h-8"
       closeIcon={false}
+      loading={loading}
     >
       <Form className="mt-4" form={form} layout="vertical" onFinish={onOk}>
         <Form.Item name="id" hidden>

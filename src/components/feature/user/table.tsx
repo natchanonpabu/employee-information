@@ -71,9 +71,7 @@ const TableUserAccount = () => {
     dispatch(deleteUser(deleteId ?? ""));
   };
 
-  const onSubmit = async () => {
-    const values = form.getFieldsValue();
-
+  const onSubmit = async (values: User) => {
     if (!user)
       return dispatch(postUser(values)).then((arg) =>
         arg.meta.requestStatus === "fulfilled" ? form.resetFields() : null

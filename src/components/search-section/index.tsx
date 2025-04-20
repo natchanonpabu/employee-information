@@ -12,10 +12,11 @@ interface SearchSectionProps {
   inputs: Inputs[];
   form: FormInstance<unknown>;
   onFinish: (values: unknown) => void;
+  loading: boolean;
 }
 
 const SearchSection = (props: SearchSectionProps) => {
-  const { inputs = [], form, onFinish } = props;
+  const { inputs = [], form, onFinish, loading = false } = props;
 
   return (
     <div className="bg-white flex px-6 pt-6 pb-4 rounded-2xl">
@@ -42,6 +43,8 @@ const SearchSection = (props: SearchSectionProps) => {
                 htmlType="submit"
                 className="w-[12.5rem] relative -top-1"
                 icon={<SearchOutlined className="text-2xl" />}
+                loading={loading}
+                disabled={loading}
               >
                 ค้นหา
               </ButtonCustom>

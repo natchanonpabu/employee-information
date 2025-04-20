@@ -27,6 +27,7 @@ export const ModalCustom = ({
   cancelText = "ยกเลิก",
   okText = "ตกลง",
   footer = true,
+  loading = false,
   ...rest
 }: ModalCustomProps) => {
   const bgColor = bgColorIcon || "bg-primary/20";
@@ -38,7 +39,13 @@ export const ModalCustom = ({
   };
 
   return (
-    <ModalStyle {...rest} footer={null} closeIcon={false} centered>
+    <ModalStyle
+      {...rest}
+      footer={null}
+      closeIcon={false}
+      centered
+      confirmLoading={loading}
+    >
       <div>
         <div className="flex justify-between items-center">
           <div
@@ -76,7 +83,11 @@ export const ModalCustom = ({
               </ButtonCustom>
             )}
             {onOk && (
-              <ButtonCustom onClick={onOk} className="w-60 h-[3.75rem]">
+              <ButtonCustom
+                onClick={onOk}
+                className="w-60 h-[3.75rem]"
+                loading={loading}
+              >
                 {okText}
               </ButtonCustom>
             )}
