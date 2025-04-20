@@ -1,4 +1,4 @@
-import { ButtonCustom, TableCustom } from "@/components/ui";
+import { ButtonCustom, ModalDelete, TableCustom } from "@/components/ui";
 import { PlusOutlined } from "@ant-design/icons";
 import { ColumnsType } from "antd/es/table";
 import Image from "next/image";
@@ -18,7 +18,6 @@ import {
   postUser,
 } from "./user.slice";
 import { User } from "./user.type";
-import { ModalDelete } from "@/components/ui/modal-delete";
 
 const TableUserAccount = () => {
   const [form] = Form.useForm();

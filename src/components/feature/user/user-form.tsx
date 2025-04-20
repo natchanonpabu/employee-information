@@ -1,8 +1,6 @@
 "use client";
 
-import { InputCustom } from "@/components/ui";
-import { ModalCustom } from "@/components/ui/modal";
-import { TextAreaCustom } from "@/components/ui/text-area";
+import { InputCustom, ModalCustom, TextAreaCustom } from "@/components/ui";
 import { Col, Form, FormInstance, Row } from "antd";
 import { useEffect } from "react";
 import { User } from "./user.type";
