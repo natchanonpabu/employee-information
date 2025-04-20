@@ -1,7 +1,7 @@
 import { cn } from "@/utils";
 import { Avatar, AvatarProps } from "antd";
 
-const AvatarCustom = (props: AvatarProps) => {
+export const AvatarCustom = (props: AvatarProps) => {
   const { className, ...rest } = props;
 
   return (
@@ -12,5 +12,3 @@ const AvatarCustom = (props: AvatarProps) => {
     />
   );
 };
-
-export default AvatarCustom;

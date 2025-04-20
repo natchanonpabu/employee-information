@@ -1,9 +1,8 @@
 "use client";
 
-import AvatarCustom from "@/components/ui/avatar";
 import Menus from "./menus";
 import { Menu13 } from "@/assets/icons/menus";
-import { ButtonCustom } from "@/components/ui";
+import { AvatarCustom, ButtonCustom } from "@/components/ui";
 
 const Sidebar = () => {
   return (
